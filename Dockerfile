@@ -2,7 +2,7 @@
 
 FROM debian:stretch-slim
 
-MAINTAINER Rafael Römhild <rafael@roemhild.de>
+LABEL Author 'Rafael Römhild <rafael@roemhild.de>'
 
 ENV ERR_USER err
 ENV DEBIAN_FRONTEND noninteractive
