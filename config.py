@@ -341,9 +341,9 @@ if 'XMPP_CA_CERT_FILE' in os.environ:
 # some buggy XMPP servers.
 #
 # The default is to try anything:
-#XMPP_FEATURE_MECHANISMS = {}
+# XMPP_FEATURE_MECHANISMS = {}
 # To use only unencrypted plain auth:
-#XMPP_FEATURE_MECHANISMS =  {'use_mech': 'PLAIN', 'unencrypted_plain': True, 'encrypted_plain': False}
+# XMPP_FEATURE_MECHANISMS =  {'use_mech': 'PLAIN', 'unencrypted_plain': True, 'encrypted_plain': False}
 
 # Modify the default keep-alive interval. By default, Err will send
 # some whitespace to the XMPP server every 300 seconds to keep the TCP
@@ -356,13 +356,26 @@ if 'XMPP_CA_CERT_FILE' in os.environ:
 #
 # If you're having issues with your bot getting constantly disconnected,
 # try to gradually lower this value until it no longer happens.
-#XMPP_KEEPALIVE_INTERVAL = 300
+# XMPP_KEEPALIVE_INTERVAL = 300
 
 # Message rate limiting for the IRC backend. This will delay subsequent
 # messages by this many seconds (floats are supported). Setting these
 # to a value of 0 effectively disables rate limiting.
-#IRC_CHANNEL_RATE = 1  # Regular channel messages
-#IRC_PRIVATE_RATE = 1  # Private messages
+# IRC_CHANNEL_RATE = 1  # Regular channel messages
+# IRC_PRIVATE_RATE = 1  # Private messages
 
 # Allow messages sent in a chatroom to be directed at requester.
-#GROUPCHAT_NICK_PREFIXED = False
+# GROUPCHAT_NICK_PREFIXED = False
+
+# Jenkins plugin Main configuration
+JENKINS_URL = os.environ.get('JENKINS_URL', 'http://jenkins.example.com')  # Must begins with 'http' or 'https'.
+JENKINS_USERNAME = os.environ.get('JENKINS_USERNAME', 'myuser')  # Make sure Jenkins ACL is configured.
+JENKINS_PASSWORD = os.environ.get('JENKINS_PASSWORD', 'mypassword')  # Use a password or token.
+
+# Webhooks configuration
+JENKINS_RECEIVE_NOTIFICATION = bool(
+    os.environ.get('JENKINS_RECEIVE_NOTIFICATION', True)
+)  # If True, this plugin will accept HTTP POST from Jenkins (see configuration below).
+JENKINS_CHATROOMS_NOTIFICATION = tuple(
+    os.environ.get('JENKINS_CHATROOMS_NOTIFICATION', '').split(','),
+)  # Tuples of chatroom names where Err should post messages from Webhooks. If left empty, all chatrooms will be spammed.
