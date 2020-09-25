@@ -379,3 +379,8 @@ JENKINS_RECEIVE_NOTIFICATION = bool(
 JENKINS_CHATROOMS_NOTIFICATION = tuple(
     os.environ.get('JENKINS_CHATROOMS_NOTIFICATION', '').split(','),
 )  # Tuples of chatroom names where Err should post messages from Webhooks. If left empty, all chatrooms will be spammed.
+
+# Jira plugin Main configuration
+JIRA_URL = os.environ.get('JIRA_URL', 'http://jira.example.com')  # Must begins with 'http' or 'https'.
+JIRA_USERNAME = os.environ.get('JIRA_USERNAME', 'myuser')  # Make sure Jira ACL is configured.
+JIRA_PASSWORD = os.environ.get('JIRA_PASSWORD', 'mypassword')  # Use a password or token.
