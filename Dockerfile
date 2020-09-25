@@ -1,8 +1,9 @@
 # Errbot - the pluggable chatbot
 
-FROM debian:stretch-slim
+FROM debian:stable-slim
 
-LABEL Author 'Rafael Römhild <rafael@roemhild.de>'
+
+LABEL author 'Rafael Römhild <rafael@roemhild.de>'
 
 ENV ERR_USER err
 ENV DEBIAN_FRONTEND noninteractive
